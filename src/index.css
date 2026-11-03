@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #f8f9fa;
+    color: #191c1d;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.hero-gradient {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.ambient-shadow {
+  box-shadow: 0px 4px 20px rgba(0, 92, 185, 0.08);
+}
+
+.elevation-2 {
+  box-shadow: 0px 4px 20px rgba(0, 92, 185, 0.08);
+}
+
+.tonal-elevation-2 {
+  box-shadow: 0px 4px 20px rgba(0, 92, 185, 0.08);
+}
+
+.trip-card-shadow {
+  box-shadow: 0px 4px 20px rgba(0, 92, 185, 0.08);
+}
+
+.nav-active {
+  border-bottom: 2px solid #00458d;
+}
+
+.bg-mesh-blur {
+  background-color: #f8f9fa;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(0, 92, 185, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(0, 92, 185, 0.05) 0px, transparent 50%);
+}
+
+.stepper-line {
+  position: absolute;
+  left: 11px;
+  top: 24px;
+  bottom: -24px;
+  width: 2px;
+  background-color: #c2c6d4;
+}
+
+.last-stepper .stepper-line {
+  display: none;
+}
+
+.scroll-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

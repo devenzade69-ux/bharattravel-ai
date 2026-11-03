@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile - BharatTravel AI</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#727784",
+                        "on-surface": "#191c1d",
+                        "outline-variant": "#c2c6d4",
+                        "tertiary-container": "#7b5700",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#015cb9",
+                        "surface-container": "#edeeef",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#d9dadb",
+                        "surface-variant": "#e1e3e4",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary-container": "#ffd17e",
+                        "background": "#f8f9fa",
+                        "on-surface-variant": "#424752",
+                        "on-background": "#191c1d",
+                        "tertiary-fixed": "#ffdea8",
+                        "surface-bright": "#f8f9fa",
+                        "inverse-primary": "#aac7ff",
+                        "on-tertiary-fixed": "#271900",
+                        "primary": "#00458d",
+                        "primary-fixed": "#d7e3ff",
+                        "on-secondary-fixed": "#0f1d28",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#5e4200",
+                        "surface": "#f8f9fa",
+                        "tertiary-fixed-dim": "#ffba20",
+                        "tertiary": "#5d4100",
+                        "secondary": "#52606d",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#c6d8ff",
+                        "secondary-fixed": "#d6e4f4",
+                        "on-primary-fixed-variant": "#00458e",
+                        "primary-container": "#005cb9",
+                        "on-secondary-container": "#586673",
+                        "on-primary-fixed": "#001b3e",
+                        "on-secondary-fixed-variant": "#3b4855",
+                        "secondary-container": "#d6e4f4",
+                        "secondary-fixed-dim": "#bac8d7",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#f3f4f5",
+                        "primary-fixed-dim": "#aac7ff",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface-container-high": "#e7e8e9",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "margin-tablet": "32px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-elevation-2 {
+            box-shadow: 0px 4px 20px rgba(0, 92, 185, 0.08);
+        }
+        .chip-active {
+            background-color: #d6e4f4; /* secondary-container */
+            border: 1.5px solid #00458d; /* primary */
+            color: #00458d;
+        }
+        .chip-inactive {
+            background-color: transparent;
+            border: 1px solid #c2c6d4; /* outline-variant */
+            color: #424752; /* on-surface-variant */
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="w-full top-0 sticky bg-surface z-50 transition-all duration-300">
+<div class="flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="text-headline-md font-headline-md text-primary tracking-tight">BharatTravel AI</div>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="font-body-md text-body-md text-secondary hover:text-primary-container transition-colors cursor-pointer active:opacity-80" href="#">Plan a Trip</a>
+<a class="font-body-md text-body-md text-secondary hover:text-primary-container transition-colors cursor-pointer active:opacity-80" href="#">Saved Trips</a>
+<div class="flex items-center gap-2 text-primary font-bold border-b-2 border-primary py-1 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-body-md text-body-md">Profile</span>
+</div>
+</div>
+<!-- Mobile Menu Toggle (Simplified for UI display) -->
+<div class="md:hidden">
+<span class="material-symbols-outlined text-on-surface" data-icon="menu">menu</span>
+</div>
+</div>
+</nav>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-base md:py-gutter">
+<!-- Header Section -->
+<section class="mb-12">
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-2">My Profile</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Manage your travel preferences and account details for personalized Indian adventures.</p>
+</section>
+<!-- Profile Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Column: User Identity Card -->
+<div class="lg:col-span-4 space-y-gutter">
+<div class="bg-surface-container-lowest rounded-[24px] p-gutter tonal-elevation-2 border border-outline-variant/30 flex flex-col items-center text-center">
+<div class="relative mb-6">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-primary-fixed">
+<img class="w-full h-full object-cover" data-alt="A professional and friendly portrait of a modern Indian traveler in their 30s, wearing casual smart attire, standing against a blurred background of a modern architectural structure in Bangalore. The lighting is warm and natural, emphasizing a clean and premium aesthetic consistent with a high-end travel application. The overall vibe is dependable and sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcu6h73NG2gRIMuQBbpxO1yz03k0D-rqI03YlxRBGrBAgrAfjs6pbx8hkCiytYa-SAO4i1GmYGr40oxLRQ3gvqitPrT3PbHZElzUq59MsGEwR98r1ShnVXEJcBR3yB_7GzZVcRlnAJMOOnyG-HQk3spkgPmHgt73VQ1uI28PXgq5BzcWz2nyoTdevFeBSkkUYqSMtdgmh_zcsURq4OJKePwSFMs0QoGYfICYaW513W2hXZjfN14z8fKw"/>
+</div>
+<button class="absolute bottom-1 right-1 bg-primary text-on-primary p-2 rounded-full shadow-lg hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</button>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Arjun Malhotra</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">arjun.travels@email.com</p>
+<div class="w-full space-y-3">
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<span class="text-label-lg font-label-lg">Base City</span>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant">New Delhi, IN</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="flight_takeoff">flight_takeoff</span>
+<span class="text-label-lg font-label-lg">Trips Planned</span>
+</div>
+<span class="text-body-sm font-body-sm text-on-surface-variant">14 Trips</span>
+</div>
+</div>
+</div>
+<!-- Account Actions -->
+<div class="bg-surface-container-lowest rounded-[24px] p-6 tonal-elevation-2 border border-outline-variant/30">
+<h3 class="font-label-lg text-label-lg text-outline uppercase tracking-wider mb-4">Quick Settings</h3>
+<div class="space-y-1">
+<button class="w-full flex items-center justify-between p-3 hover:bg-surface-container-high rounded-xl transition-colors text-on-surface group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="notifications">notifications</span>
+<span class="font-body-md font-medium">Notifications</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-3 hover:bg-surface-container-high rounded-xl transition-colors text-on-surface group">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="security">security</span>
+<span class="font-body-md font-medium">Privacy &amp; Security</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between p-3 hover:bg-error-container/20 rounded-xl transition-colors text-error group mt-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-body-md font-medium">Log Out</span>
+</div>
+</button>
+</div>
+</div>
+</div>
+<!-- Right Column: Preferences & Form -->
+<div class="lg:col-span-8 space-y-gutter">
+<!-- Travel Preferences Panel -->
+<div class="bg-surface-container-lowest rounded-[24px] p-gutter tonal-elevation-2 border border-outline-variant/30">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 bg-primary-fixed rounded-xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+</div>
+<h2 class="font-headline-md text-headline-md">Travel Preferences</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Hotel Preference -->
+<div class="space-y-4">
+<label class="font-label-lg text-label-lg text-on-surface-variant">Preferred Stay Type</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full text-label-md font-label-md chip-inactive hover:border-primary transition-all">Heritage Boutique</button>
+<button class="px-4 py-2 rounded-full text-label-md font-label-md chip-active">Luxury Resorts</button>
+<button class="px-4 py-2 rounded-full text-label-md font-label-md chip-inactive hover:border-primary transition-all">Modern Business</button>
+<button class="px-4 py-2 rounded-full text-label-md font-label-md chip-inactive hover:border-primary transition-all">Eco-Stays</button>
+</div>
+</div>
+<!-- Travel Pace -->
+<div class="space-y-4">
+<label class="font-label-lg text-label-lg text-on-surface-variant">Travel Intensity</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full text-label-md font-label-md chip-inactive hover:border-primary transition-all">Relaxed (1-2 events/day)</button>
+<button class="px-4 py-2 rounded-full text-label-md font-label-md chip-active">Balanced</button>
+<button class="px-4 py-2 rounded-full text-label-md font-label-md chip-inactive hover:border-primary transition-all">Packed (4+ events/day)</button>
+</div>
+</div>
+<!-- Dietary Preferences -->
+<div class="space-y-4 md:col-span-2">
+<label class="font-label-lg text-label-lg text-on-surface-variant">Dietary Restrictions &amp; Cuisine</label>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<div class="flex items-center gap-3 p-3 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-high transition-all">
+<input checked="" class="w-5 h-5 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md">Vegetarian</span>
+</div>
+<div class="flex items-center gap-3 p-3 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-high transition-all">
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md">Vegan</span>
+</div>
+<div class="flex items-center gap-3 p-3 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-high transition-all">
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md">Gluten Free</span>
+</div>
+<div class="flex items-center gap-3 p-3 border border-outline-variant rounded-xl cursor-pointer hover:bg-surface-container-high transition-all">
+<input checked="" class="w-5 h-5 rounded border-outline text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-body-md">North Indian</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Account Settings Panel -->
+<div class="bg-surface-container-lowest rounded-[24px] p-gutter tonal-elevation-2 border border-outline-variant/30">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 bg-primary-fixed rounded-xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="manage_accounts">manage_accounts</span>
+</div>
+<h2 class="font-headline-md text-headline-md">Account Settings</h2>
+</div>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-label-lg font-label-lg text-on-surface-variant">Full Name</label>
+<input class="w-full p-4 rounded-xl border border-outline-variant bg-surface focus:border-primary focus:ring-2 focus:ring-primary-fixed outline-none transition-all" type="text" value="Arjun Malhotra"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-lg font-label-lg text-on-surface-variant">Phone Number</label>
+<input class="w-full p-4 rounded-xl border border-outline-variant bg-surface focus:border-primary focus:ring-2 focus:ring-primary-fixed outline-none transition-all" type="tel" value="+91 98765 43210"/>
+</div>
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="text-label-lg font-label-lg text-on-surface-variant">Language Preference</label>
+<select class="w-full p-4 rounded-xl border border-outline-variant bg-surface focus:border-primary focus:ring-2 focus:ring-primary-fixed outline-none transition-all appearance-none">
+<option>English (India)</option>
+<option>Hindi (हिन्दी)</option>
+<option>Marathi (मराठी)</option>
+<option>Bengali (বাংলা)</option>
+</select>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant flex justify-end gap-4">
+<button class="px-6 py-3 rounded-full text-primary font-label-lg hover:bg-primary-fixed transition-colors" type="button">Discard Changes</button>
+<button class="px-8 py-3 rounded-full bg-primary text-on-primary font-label-lg hover:bg-primary-container transition-all shadow-md active:scale-95" type="button">Save Profile</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 bg-surface-container mt-16">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col gap-4">
+<div class="text-headline-sm font-headline-sm text-primary">BharatTravel AI</div>
+<p class="text-label-md font-label-md text-on-surface-variant leading-relaxed">Intelligence-driven itinerary planning for the modern Indian traveler.</p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label-lg text-primary uppercase tracking-wider">Plan</h4>
+<ul class="space-y-2">
+<li><a class="text-label-md font-label-md text-on-surface-variant hover:underline transition-all cursor-pointer" href="#">Start a Trip</a></li>
+<li><a class="text-label-md font-label-md text-on-surface-variant hover:underline transition-all cursor-pointer" href="#">Explore Destinations</a></li>
+<li><a class="text-label-md font-label-md text-on-surface-variant hover:underline transition-all cursor-pointer" href="#">Group Planning</a></li>
+</ul>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label-lg text-primary uppercase tracking-wider">Company</h4>
+<ul class="space-y-2">
+<li><a class="text-label-md font-label-md text-on-surface-variant hover:underline transition-all cursor-pointer" href="#">About Us</a></li>
+<li><a class="text-label-md font-label-md text-on-surface-variant hover:underline transition-all cursor-pointer" href="#">Privacy Policy</a></li>
+<li><a class="text-label-md font-label-md text-on-surface-variant hover:underline transition-all cursor-pointer" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label-lg text-primary uppercase tracking-wider">Help</h4>
+<ul class="space-y-2">
+<li><a class="text-label-md font-label-md text-on-surface-variant hover:underline transition-all cursor-pointer" href="#">Contact Support</a></li>
+<li><a class="text-label-md font-label-md text-on-surface-variant hover:underline transition-all cursor-pointer" href="#">FAQs</a></li>
+<li><a class="text-label-md font-label-md text-on-surface-variant hover:underline transition-all cursor-pointer" href="#">Partner with Us</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mt-12 pt-8 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-label-md font-label-md text-on-surface-variant">© 2024 BharatTravel AI. All rights reserved.</p>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="public">public</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="language">language</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="mail">mail</span>
+</div>
+</div>
+</footer>
+<script>
+        // Simple Micro-interactions
+        document.querySelectorAll('input, select').forEach(element => {
+            element.addEventListener('focus', () => {
+                element.parentElement.querySelector('label')?.classList.add('text-primary');
+            });
+            element.addEventListener('blur', () => {
+                element.parentElement.querySelector('label')?.classList.remove('text-primary');
+            });
+        });
+
+        // Preference Chip Toggle Logic
+        const chips = document.querySelectorAll('.chip-inactive, .chip-active');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                // Check if it's within a multi-select or single select group (simplified toggle)
+                const isIntensity = chip.closest('.space-y-4').innerText.includes('Intensity') || chip.closest('.space-y-4').innerText.includes('Stay Type');
+                if(isIntensity) {
+                    chip.parentElement.querySelectorAll('button').forEach(b => {
+                        b.className = 'px-4 py-2 rounded-full text-label-md font-label-md chip-inactive hover:border-primary transition-all';
+                    });
+                    chip.className = 'px-4 py-2 rounded-full text-label-md font-label-md chip-active';
+                } else {
+                    chip.classList.toggle('chip-active');
+                    chip.classList.toggle('chip-inactive');
+                }
+            });
+        });
+    </script>
+</body></html>

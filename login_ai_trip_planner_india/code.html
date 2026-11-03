@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login - BharatTravel AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#727784",
+                    "on-surface": "#191c1d",
+                    "outline-variant": "#c2c6d4",
+                    "tertiary-container": "#7b5700",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#015cb9",
+                    "surface-container": "#edeeef",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#d9dadb",
+                    "surface-variant": "#e1e3e4",
+                    "inverse-surface": "#2e3132",
+                    "on-tertiary-container": "#ffd17e",
+                    "background": "#f8f9fa",
+                    "on-surface-variant": "#424752",
+                    "on-background": "#191c1d",
+                    "tertiary-fixed": "#ffdea8",
+                    "surface-bright": "#f8f9fa",
+                    "inverse-primary": "#aac7ff",
+                    "on-tertiary-fixed": "#271900",
+                    "primary": "#00458d",
+                    "primary-fixed": "#d7e3ff",
+                    "on-secondary-fixed": "#0f1d28",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#5e4200",
+                    "surface": "#f8f9fa",
+                    "tertiary-fixed-dim": "#ffba20",
+                    "tertiary": "#5d4100",
+                    "secondary": "#52606d",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#c6d8ff",
+                    "secondary-fixed": "#d6e4f4",
+                    "on-primary-fixed-variant": "#00458e",
+                    "primary-container": "#005cb9",
+                    "on-secondary-container": "#586673",
+                    "on-primary-fixed": "#001b3e",
+                    "on-secondary-fixed-variant": "#3b4855",
+                    "secondary-container": "#d6e4f4",
+                    "secondary-fixed-dim": "#bac8d7",
+                    "on-error": "#ffffff",
+                    "surface-container-low": "#f3f4f5",
+                    "primary-fixed-dim": "#aac7ff",
+                    "surface-container-highest": "#e1e3e4",
+                    "surface-container-high": "#e7e8e9",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "base": "8px",
+                    "margin-tablet": "32px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .elevation-2 {
+            box-shadow: 0px 4px 20px rgba(0, 92, 185, 0.08);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .bg-mesh-blur {
+            background-color: #f8f9fa;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(0, 92, 185, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(0, 92, 185, 0.05) 0px, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky z-50 bg-surface dark:bg-on-surface">
+<nav class="flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="text-headline-md font-headline-md text-primary dark:text-primary-fixed cursor-pointer">
+                BharatTravel AI
+            </div>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="text-secondary dark:text-secondary-fixed font-body-md text-body-md hover:text-primary-container dark:hover:text-primary-fixed-dim transition-colors cursor-pointer active:opacity-80" href="#">Plan a Trip</a>
+<a class="text-secondary dark:text-secondary-fixed font-body-md text-body-md hover:text-primary-container dark:hover:text-primary-fixed-dim transition-colors cursor-pointer active:opacity-80" href="#">Saved Trips</a>
+<div class="h-6 w-[1px] bg-outline-variant"></div>
+<button class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary font-body-md text-body-md cursor-pointer active:opacity-80">Login</button>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="account_circle">account_circle</span>
+</div>
+<!-- Mobile Menu Toggle -->
+<div class="md:hidden">
+<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
+</div>
+</nav>
+</header>
+<!-- Main Content: Login Canvas -->
+<main class="flex-grow flex items-center justify-center bg-mesh-blur px-margin-mobile py-12 relative overflow-hidden">
+<!-- Subtle Decorative Elements -->
+<div class="absolute top-[-10%] right-[-10%] w-96 h-96 bg-primary-fixed opacity-20 rounded-full blur-3xl"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-96 h-96 bg-secondary-fixed opacity-20 rounded-full blur-3xl"></div>
+<div class="w-full max-w-[480px] bg-surface-container-lowest border border-outline-variant p-base md:p-gutter rounded-[24px] elevation-2 z-10">
+<div class="text-center mb-10">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-2">Welcome Back</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Access your AI-powered travel dashboard</p>
+</div>
+<form class="space-y-6" onsubmit="event.preventDefault()">
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="block font-label-lg text-label-lg text-on-surface" for="email">Email Address</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors" data-icon="mail">mail</span>
+<input class="w-full pl-12 pr-4 py-4 bg-transparent border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-body-md text-body-md" id="email" placeholder="name@example.com" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<label class="block font-label-lg text-label-lg text-on-surface" for="password">Password</label>
+<a class="font-label-md text-label-md text-primary hover:underline transition-all" href="#">Forgot Password?</a>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors" data-icon="lock">lock</span>
+<input class="w-full pl-12 pr-12 py-4 bg-transparent border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-body-md text-body-md" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-primary" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<!-- Login Button -->
+<button class="w-full h-14 bg-primary text-on-primary font-headline-md text-body-lg rounded-xl hover:bg-primary-container transition-all active:scale-[0.98] elevation-2" type="submit">
+                    Login
+                </button>
+</form>
+<!-- Divider -->
+<div class="relative my-10 text-center">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-outline-variant"></div>
+</div>
+<span class="relative px-4 bg-surface-container-lowest text-label-md font-label-md text-outline">OR CONTINUE WITH</span>
+</div>
+<!-- Social Login -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-3 h-12 bg-surface-container-low border border-outline-variant rounded-xl hover:bg-surface-variant transition-colors active:scale-[0.98]">
+<img class="w-5 h-5" data-alt="Official Google logo with vibrant primary colors and minimalist geometric circular design on a clean white background for a professional corporate tech interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJvM0yDR16ivx0vkIz5RDOlJgzsMHntR3hshpxdzah1wWeESFFlL-GGQI8sZGlbrhQxly7TF5Y2EQNisvsIGAGSyrFU1gauBTyn8MP9WfczhfF54ns2FNtwOyUqGeYxvI-ZWnj9FZxCrQ0IaCovLZ6S359OHunIk7NAqJcoz8P9B-rBPIRRiV0qiB0MXFaEMg29ohr6m6WpZSZq5QThE4CRWohpaENC3PUuUBX10vUOJ6PXl1k8Z0TbA"/>
+<span class="font-label-lg text-label-lg text-on-surface">Google</span>
+</button>
+<button class="flex items-center justify-center gap-3 h-12 bg-surface-container-low border border-outline-variant rounded-xl hover:bg-surface-variant transition-colors active:scale-[0.98]">
+<img class="w-5 h-5" data-alt="Official Apple logo icon in minimalist black, centered on a clean background, representing modern premium technology and sophisticated digital design aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2W1VjfGTmm8UvZ3f9UOB1fdbcuTbtjb5tcpEYrAkR1j6zaA9YxQoHwFas29yhb_7XwDqooO8JtV2ks-7av6lp-Quq9UKFnJIpcIYUn-LwkomrCvxEl2NqTzvSHLuS3sthc4_r5s5Fttuv2cyo85VHeQ4i8m_KwnEs1FLzs4-iQKYyWzygmfK-4PLyjjHv-W4tgrRS0mbtOoQ6KryTmxIIA5C11db1s_2xVVfYpvtzCp-yop77ny1f-A"/>
+<span class="font-label-lg text-label-lg text-on-surface">Apple</span>
+</button>
+</div>
+<!-- Sign Up Prompt -->
+<div class="text-center mt-10">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Don't have an account? 
+                    <a class="text-primary font-bold hover:underline" href="#">Sign up for free</a>
+</p>
+</div>
+</div>
+<!-- Hero Contextual Image (Subtle Background Detail) -->
+<div class="hidden lg:block absolute left-margin-desktop top-1/2 -translate-y-1/2 opacity-10 pointer-events-none">
+<img class="w-[500px] rounded-[48px]" data-alt="A serene landscape of the Taj Mahal at sunrise with soft golden light reflecting on the Yamuna river. The atmosphere is intelligent and tranquil, featuring high-end architectural details and a professional modern travel aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyu6VKqK10T_URPI2hrqa4N1y7Mxs9dD4yRHTdU7Q2VmENfQCbXccrPqOELi878-Ht1V8gcEX09dlZDMHB3LpBu-p62NidZmb3S9C5_wDtM1VGctnQ3Zjjn_41ttyEGsrmJAtym4g-NKmMmbbHPZtD55vmlh6-EFdIRtTXgoF0jLABzhk21n0VcJWDUA5cuUbgKL2HTcjUM5VlNqAL_xeANBbgm_dVB6RoYKO6mm8GsyOX4H1Pvzrs9Q"/>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 bg-surface-container dark:bg-surface-container-high">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="space-y-4">
+<div class="text-headline-sm font-headline-sm text-primary dark:text-primary-fixed">BharatTravel AI</div>
+<p class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface max-w-xs">
+                    Your intelligent companion for exploring the vibrant landscapes of India.
+                </p>
+</div>
+<div class="flex flex-col gap-2">
+<h4 class="font-label-lg text-label-lg text-on-surface mb-2">Company</h4>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:underline transition-all cursor-pointer" href="#">About Us</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:underline transition-all cursor-pointer" href="#">Contact Support</a>
+</div>
+<div class="flex flex-col gap-2">
+<h4 class="font-label-lg text-label-lg text-on-surface mb-2">Legal</h4>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:underline transition-all cursor-pointer" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:underline transition-all cursor-pointer" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label-lg text-label-lg text-on-surface mb-2">Stay Connected</h4>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-80" data-icon="language">language</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:opacity-80" data-icon="share">share</span>
+</div>
+<div class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface pt-4">
+                    © 2024 BharatTravel AI. All rights reserved.
+                </div>
+</div>
+</div>
+</footer>
+<script>
+        // Simple password toggle logic
+        document.querySelector('button[type="button"]').addEventListener('click', function() {
+            const input = document.getElementById('password');
+            const icon = this.querySelector('.material-symbols-outlined');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.innerText = 'visibility_off';
+            } else {
+                input.type = 'password';
+                icon.innerText = 'visibility';
+            }
+        });
+
+        // Entrance animation
+        window.addEventListener('DOMContentLoaded', () => {
+            const loginCard = document.querySelector('main > div');
+            loginCard.style.opacity = '0';
+            loginCard.style.transform = 'translateY(20px)';
+            loginCard.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+            
+            setTimeout(() => {
+                loginCard.style.opacity = '1';
+                loginCard.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body></html>

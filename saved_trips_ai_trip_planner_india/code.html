@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Saved Trips | BharatTravel AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Shared Components Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#727784",
+                    "on-surface": "#191c1d",
+                    "outline-variant": "#c2c6d4",
+                    "tertiary-container": "#7b5700",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#015cb9",
+                    "surface-container": "#edeeef",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#d9dadb",
+                    "surface-variant": "#e1e3e4",
+                    "inverse-surface": "#2e3132",
+                    "on-tertiary-container": "#ffd17e",
+                    "background": "#f8f9fa",
+                    "on-surface-variant": "#424752",
+                    "on-background": "#191c1d",
+                    "tertiary-fixed": "#ffdea8",
+                    "surface-bright": "#f8f9fa",
+                    "inverse-primary": "#aac7ff",
+                    "on-tertiary-fixed": "#271900",
+                    "primary": "#00458d",
+                    "primary-fixed": "#d7e3ff",
+                    "on-secondary-fixed": "#0f1d28",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#5e4200",
+                    "surface": "#f8f9fa",
+                    "tertiary-fixed-dim": "#ffba20",
+                    "tertiary": "#5d4100",
+                    "secondary": "#52606d",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#c6d8ff",
+                    "secondary-fixed": "#d6e4f4",
+                    "on-primary-fixed-variant": "#00458e",
+                    "primary-container": "#005cb9",
+                    "on-secondary-container": "#586673",
+                    "on-primary-fixed": "#001b3e",
+                    "on-secondary-fixed-variant": "#3b4855",
+                    "secondary-container": "#d6e4f4",
+                    "secondary-fixed-dim": "#bac8d7",
+                    "on-error": "#ffffff",
+                    "surface-container-low": "#f3f4f5",
+                    "primary-fixed-dim": "#aac7ff",
+                    "surface-container-highest": "#e1e3e4",
+                    "surface-container-high": "#e7e8e9",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "base": "8px",
+                    "margin-tablet": "32px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f8f9fa;
+            color: #191c1d;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .trip-card-shadow {
+            box-shadow: 0px 4px 20px rgba(0, 92, 185, 0.08);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c2c6d4;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky z-50 bg-surface dark:bg-on-surface">
+<nav class="flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-base">
+<span class="text-headline-md font-headline-md text-primary dark:text-primary-fixed">BharatTravel AI</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-body-md text-body-md text-secondary dark:text-secondary-fixed hover:text-primary-container dark:hover:text-primary-fixed-dim transition-colors cursor-pointer active:opacity-80" href="#">Plan a Trip</a>
+<a class="font-body-md text-body-md text-primary dark:text-primary-fixed font-bold border-b-2 border-primary cursor-pointer active:opacity-80" href="#">Saved Trips</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block font-label-lg text-label-lg text-primary px-4 py-2 cursor-pointer active:opacity-80">Login</button>
+<span class="material-symbols-outlined text-outline cursor-pointer" data-icon="account_circle">account_circle</span>
+<button class="md:hidden flex items-center">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</nav>
+</header>
+<!-- Main Content -->
+<main class="flex-grow container mx-auto px-margin-mobile md:px-margin-desktop py-12 max-w-container-max">
+<!-- Header Section -->
+<div class="mb-10">
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-2">Saved Trips</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Access all your AI-generated Indian adventures. Review your itineraries, manage your travel dates, or share your plans with companions.</p>
+</div>
+<!-- Filter & Search Bar (Internal) -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-gutter mb-8">
+<div class="flex gap-2 overflow-x-auto pb-2 custom-scrollbar">
+<button class="px-6 py-2 rounded-full bg-secondary-container text-primary font-label-lg whitespace-nowrap">All Trips</button>
+<button class="px-6 py-2 rounded-full bg-white border border-outline-variant text-on-surface-variant font-label-lg whitespace-nowrap hover:bg-surface-container-low transition-colors">Upcoming</button>
+<button class="px-6 py-2 rounded-full bg-white border border-outline-variant text-on-surface-variant font-label-lg whitespace-nowrap hover:bg-surface-container-low transition-colors">Drafts</button>
+<button class="px-6 py-2 rounded-full bg-white border border-outline-variant text-on-surface-variant font-label-lg whitespace-nowrap hover:bg-surface-container-low transition-colors">Completed</button>
+</div>
+<div class="relative w-full md:w-80">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-outline-variant focus:ring-2 focus:ring-primary focus:border-primary outline-none bg-white" placeholder="Search by destination..." type="text"/>
+</div>
+</div>
+<!-- Trip Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1: Kerala -->
+<div class="bg-white rounded-[24px] overflow-hidden trip-card-shadow flex flex-col group transition-transform hover:-translate-y-1">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A cinematic, wide-angle shot of traditional wooden houseboats floating peacefully on the emerald backwaters of Alleppey, Kerala. The scene is illuminated by the warm, golden glow of a tropical sunset reflecting off the calm water. Dense palm groves line the horizon under a soft, hazy sky. The visual style is premium and corporate-modern with high contrast and deep blues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCINiVBhkW6d733FFtuT6ijJyqjMzlgg4fqAWBDnpIOssFkLCZV4-kKUahx7LZNvvmb1u3hznIyLbIA43s7I69CNJnwDB1iBK62z97b7Vqb_QrEyezlnGL1PQDjpw9BYuRtsVdgZC2VZOgASmHHJVId32rR8EJckxF_YTsd2CrkqOxPg2xJEk9JVnrb4gwE4qPKOEwtCmXxhecAiP5zaZyVgQyBb1oEiyvDb3Nd6OtuPxmxuNLuXpu0bg"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="calendar_today">calendar_today</span>
+<span class="text-label-md font-label-md text-on-surface">6 Days</span>
+</div>
+</div>
+<div class="p-6 flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Munnar &amp; Alleppey</h3>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="bookmark" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">Tea gardens, misty mountains, and serene backwaters of God's Own Country.</p>
+<div class="flex items-center gap-3 mt-auto">
+<button class="flex-grow bg-primary text-white py-3 rounded-xl font-label-lg hover:bg-primary-container transition-colors active:opacity-90">View Itinerary</button>
+<button class="p-3 rounded-xl border border-outline-variant text-error hover:bg-error-container/20 transition-colors active:opacity-90">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2: Rajasthan -->
+<div class="bg-white rounded-[24px] overflow-hidden trip-card-shadow flex flex-col group transition-transform hover:-translate-y-1">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A majestic low-angle shot of the Hawa Mahal in Jaipur, Rajasthan, crafted from intricate pink sandstone. The early morning light creates long, soft shadows and highlights the architectural details of the 953 windows. The color palette is rich in desert tones and royal blues. The atmosphere is sophisticated and orderly, reflecting a high-end digital concierge experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxubnsvFNnD81b0Xgi_PKxRE3Ljh6eJja3KMTghZvSnUuwubNqw27cg-IoIMwlIgnnSZ40yzZ3l4kUBEjS2s8rdpwGKgI2kKkFPX49kmHQpA2ewvNCXNynMpVNC20Lw4o5UMtRE7bm6HvFHfgZTAafRzu2UY5vhLqsrygXRL-NA7SZjiYkqfdmky6N9jEGrfyrKJi7VW_-22bqJqk6mTdbulqr_V9sOiK282IQbRazCOkfMytAVHr7DA"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="calendar_today">calendar_today</span>
+<span class="text-label-md font-label-md text-on-surface">8 Days</span>
+</div>
+</div>
+<div class="p-6 flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Royal Rajasthan</h3>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="bookmark" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">Exploring the palaces, forts, and desert culture of Jaipur and Jodhpur.</p>
+<div class="flex items-center gap-3 mt-auto">
+<button class="flex-grow bg-primary text-white py-3 rounded-xl font-label-lg hover:bg-primary-container transition-colors active:opacity-90">View Itinerary</button>
+<button class="p-3 rounded-xl border border-outline-variant text-error hover:bg-error-container/20 transition-colors active:opacity-90">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3: Ladakh -->
+<div class="bg-white rounded-[24px] overflow-hidden trip-card-shadow flex flex-col group transition-transform hover:-translate-y-1">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A breathtaking view of Pangong Lake in Ladakh, showcasing the crystal clear turquoise water against the backdrop of barren, rugged Himalayan mountains. The lighting is crisp and high-key, with a vibrant blue sky overhead. The aesthetic is clean, minimalist, and serene, emphasizing the high-tech precision of an AI travel planner. Primary blue accents dominate the cool color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVaaafuVsjoh3kd_FiRWnUZJzDBLuTi3-QelrBIZHqOLU17RlB5MhaTCAxjz0a3SNxsOmNFWRBM0dAA918OMqvgUfnLBsSztLefJEXZtVTmGcecgOupvniMnGWgZ9hA9r3bVeAEM6JwisUq0GXn2raQ16wA--KErEgmA8Dk5rVb3K0ejQw534ejq2Bi8szZh2fJFWIAfy4DICO-vIr2H6Ihs7ZgLXf2NSPpnp8fmB8tb-NmNT4nA04ug"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="calendar_today">calendar_today</span>
+<span class="text-label-md font-label-md text-on-surface">10 Days</span>
+</div>
+</div>
+<div class="p-6 flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Ladakh Odyssey</h3>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="bookmark" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">High-altitude passes, ancient monasteries, and the stunning Pangong Lake.</p>
+<div class="flex items-center gap-3 mt-auto">
+<button class="flex-grow bg-primary text-white py-3 rounded-xl font-label-lg hover:bg-primary-container transition-colors active:opacity-90">View Itinerary</button>
+<button class="p-3 rounded-xl border border-outline-variant text-error hover:bg-error-container/20 transition-colors active:opacity-90">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 4: Varanasi -->
+<div class="bg-white rounded-[24px] overflow-hidden trip-card-shadow flex flex-col group transition-transform hover:-translate-y-1">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A wide, atmospheric view of the Ganges river ghats in Varanasi during the evening Aarti ceremony. Dozens of small floating oil lamps twinkle on the dark water, while the riverbank is illuminated by golden torchlight and the silhouettes of ancient temples. The mood is spiritual, dependable, and intelligent, with a rich, warm lighting setup that balances the cool blue of the river." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCMDz5tbRCnEYtmcrED7FGehuQ_YF8cz0yIIjXWnzZKGAFVB431y6mjpkn96SH6d5ZiZpkTcTd7cle7qnMhsjHzT-nQUtb_2rVW5JWTJOvwivxrBll6wjTPtMLAbeao5O_9A31wAjPa5TBtuB0vIUdiogHu_NsR_nUR_pl4WCPka14oA6QxpjrWprclqtn0keWdYGvNZ4_FbDzv9w_X3hvupc5OMIjA6Wi2EkwS7P9aPmpMZ7FEwYDVQ"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="calendar_today">calendar_today</span>
+<span class="text-label-md font-label-md text-on-surface">4 Days</span>
+</div>
+</div>
+<div class="p-6 flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Spiritual Varanasi</h3>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="bookmark" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">Witnessing the timeless rituals and ancient architecture on the banks of Ganga.</p>
+<div class="flex items-center gap-3 mt-auto">
+<button class="flex-grow bg-primary text-white py-3 rounded-xl font-label-lg hover:bg-primary-container transition-colors active:opacity-90">View Itinerary</button>
+<button class="p-3 rounded-xl border border-outline-variant text-error hover:bg-error-container/20 transition-colors active:opacity-90">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 5: Goa -->
+<div class="bg-white rounded-[24px] overflow-hidden trip-card-shadow flex flex-col group transition-transform hover:-translate-y-1">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A high-end aerial shot of a pristine, white-sand beach in South Goa, framed by lush palm trees and the azure Arabian Sea. Elegant sunbeds and a minimalist beach shack are visible, captured in the soft light of a mid-morning sun. The color palette is vibrant yet sophisticated, utilizing shades of teal and sand to evoke a sense of effortless travel planning." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRoLQljTL4xuPlJpzsD-MQO0MvvmSZAwHwja_dvJf-gOZPuAHvxhxo-2vcdEvLvCVVH6QTxzYPuYMYNuzSlN7pw-aOtOUZVbeKeISEETAp8kSeUorCTAlJ1qVklROXOfOQRLr8ArxLZ9uhPiqublzkBybn3Uhur9F1SBsJTdj-iIU8dOckcCA_jtl2ekHI3M-b7YOFOTQhnqijC8QU8M7gtGlskVBbLtMQBl_puZDI4XjVwsgqRyGuyg"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="calendar_today">calendar_today</span>
+<span class="text-label-md font-label-md text-on-surface">5 Days</span>
+</div>
+</div>
+<div class="p-6 flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">Unseen Goa</h3>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="bookmark" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">Relaxation in South Goa beaches and exploration of Portuguese heritage.</p>
+<div class="flex items-center gap-3 mt-auto">
+<button class="flex-grow bg-primary text-white py-3 rounded-xl font-label-lg hover:bg-primary-container transition-colors active:opacity-90">View Itinerary</button>
+<button class="p-3 rounded-xl border border-outline-variant text-error hover:bg-error-container/20 transition-colors active:opacity-90">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- New Trip Placeholder -->
+<div class="bg-surface-container-lowest border-2 border-dashed border-outline-variant rounded-[24px] flex flex-col items-center justify-center p-8 text-center group cursor-pointer hover:border-primary transition-all hover:bg-white">
+<div class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="add">add</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">Plan a New Trip</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Let our AI craft your next perfect Indian journey.</p>
+</div>
+</div>
+<!-- Pagination (Subtle) -->
+<div class="mt-16 flex items-center justify-center gap-4">
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors text-outline">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<div class="flex gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-outline-variant"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-outline-variant"></span>
+</div>
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors text-outline">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 bg-surface-container dark:bg-surface-container-high">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1">
+<span class="text-headline-sm font-headline-sm text-primary dark:text-primary-fixed block mb-4">BharatTravel AI</span>
+<p class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface pr-4">Intelligent, effortless travel planning for the modern Indian traveler.</p>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-label-lg text-label-lg text-on-surface mb-1">Company</h4>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface hover:underline transition-all cursor-pointer" href="#">About Us</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface hover:underline transition-all cursor-pointer" href="#">Contact Support</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-label-lg text-label-lg text-on-surface mb-1">Legal</h4>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface hover:underline transition-all cursor-pointer" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface hover:underline transition-all cursor-pointer" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-label-lg text-label-lg text-on-surface mb-1">Subscribe</h4>
+<div class="flex gap-2">
+<input class="bg-white border border-outline-variant rounded-lg px-3 py-2 text-label-md w-full focus:ring-1 focus:ring-primary outline-none" placeholder="Email address" type="email"/>
+<button class="bg-primary text-white p-2 rounded-lg"><span class="material-symbols-outlined" data-icon="send">send</span></button>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-outline-variant/30 text-center max-w-container-max mx-auto px-margin-mobile">
+<p class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface">© 2024 BharatTravel AI. All rights reserved.</p>
+</div>
+</footer>
+<!-- Micro-interaction Scripts -->
+<script>
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+        
+        // Simple filter toggle logic
+        const filterButtons = document.querySelectorAll('.flex.gap-2.overflow-x-auto button');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => {
+                    b.classList.remove('bg-secondary-container', 'text-primary');
+                    b.classList.add('bg-white', 'border', 'border-outline-variant', 'text-on-surface-variant');
+                });
+                btn.classList.add('bg-secondary-container', 'text-primary');
+                btn.classList.remove('bg-white', 'border', 'border-outline-variant', 'text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>

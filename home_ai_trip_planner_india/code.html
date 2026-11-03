@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BharatTravel AI - Effortless AI Trip Planning for India</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#727784",
+                        "on-surface": "#191c1d",
+                        "outline-variant": "#c2c6d4",
+                        "tertiary-container": "#7b5700",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#015cb9",
+                        "surface-container": "#edeeef",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#d9dadb",
+                        "surface-variant": "#e1e3e4",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary-container": "#ffd17e",
+                        "background": "#f8f9fa",
+                        "on-surface-variant": "#424752",
+                        "on-background": "#191c1d",
+                        "tertiary-fixed": "#ffdea8",
+                        "surface-bright": "#f8f9fa",
+                        "inverse-primary": "#aac7ff",
+                        "on-tertiary-fixed": "#271900",
+                        "primary": "#00458d",
+                        "primary-fixed": "#d7e3ff",
+                        "on-secondary-fixed": "#0f1d28",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#5e4200",
+                        "surface": "#f8f9fa",
+                        "tertiary-fixed-dim": "#ffba20",
+                        "tertiary": "#5d4100",
+                        "secondary": "#52606d",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#c6d8ff",
+                        "secondary-container": "#d6e4f4",
+                        "on-secondary-container": "#586673",
+                        "on-primary-fixed": "#001b3e",
+                        "on-secondary-fixed-variant": "#3b4855",
+                        "secondary-fixed": "#d6e4f4",
+                        "secondary-fixed-dim": "#bac8d7",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#f3f4f5",
+                        "primary-fixed-dim": "#aac7ff",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface-container-high": "#e7e8e9",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "card": "24px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "margin-tablet": "32px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.7) 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .ambient-shadow {
+            box-shadow: 0px 4px 20px rgba(0, 92, 185, 0.08);
+        }
+        .nav-active {
+            border-bottom: 2px solid #00458d;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary">
+<!-- TopNavBar -->
+<nav class="w-full top-0 sticky z-50 bg-surface dark:bg-on-surface">
+<div class="flex justify-between items-center h-16 px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-headline-md font-headline-md text-primary dark:text-primary-fixed tracking-tight">BharatTravel AI</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="font-body-md text-body-md text-secondary dark:text-secondary-fixed hover:text-primary-container dark:hover:text-primary-fixed-dim transition-colors cursor-pointer active:opacity-80" href="#">Plan a Trip</a>
+<a class="font-body-md text-body-md text-secondary dark:text-secondary-fixed hover:text-primary-container dark:hover:text-primary-fixed-dim transition-colors cursor-pointer active:opacity-80" href="#">Saved Trips</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="font-body-md text-body-md text-secondary dark:text-secondary-fixed hover:text-primary-container dark:hover:text-primary-fixed-dim transition-colors cursor-pointer px-4 py-2">Login</button>
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed cursor-pointer" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative h-[85vh] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0" data-alt="A majestic wide-angle shot of the Taj Mahal at sunrise, with soft pink and orange hues reflecting off the white marble and the surrounding water. The scene is tranquil and premium, featuring crisp architectural details and lush greenery in the foreground. The lighting is high-key and sophisticated, maintaining a professional travel-concierge aesthetic with balanced contrast and a sense of wonder." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDE4QiSHpfDMNAdlwsdPmPqTBp_C87F46PHNHyUYl7L1RJvUOqh2QHDtP76cK5EEvmNElBJdMPptM-cvOA9GCSvPfHDK7nzp0_8xAiwhYsovFYsQhsbkJI18iVz1cjrfvbs-rGKxdKs6sFaC_HqVgdDeqtM-vCWsppWOvV4kgyrPuIijq3BjpsKiXjaW8LgD-3Kvq0db99Mi7sjPkr3UJqS1S6lcKr_ut-UxiH6yFmlcjX7mL7yoHX6-A')"></div>
+<div class="absolute inset-0 hero-gradient z-10"></div>
+<div class="relative z-20 max-w-container-max mx-auto px-margin-desktop text-center text-white">
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md mb-6 border border-white/20">
+<span class="material-symbols-outlined text-[18px]" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-lg text-label-lg uppercase tracking-wider">Next-Gen Travel Intelligence</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl mb-6 max-w-3xl mx-auto">Discover India, Optimized by AI.</h1>
+<p class="font-body-lg text-body-lg mb-10 max-w-2xl mx-auto opacity-90">Experience the magic of the Indian subcontinent with personalized, data-driven itineraries that adapt to your rhythm, preferences, and local secrets.</p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<button class="bg-primary text-white font-headline-md text-body-md h-[56px] px-10 rounded-full hover:scale-105 transition-transform ambient-shadow flex items-center gap-2">
+                        Start Planning
+                        <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="bg-white/20 backdrop-blur-md text-white border border-white/30 font-headline-md text-body-md h-[56px] px-10 rounded-full hover:bg-white/30 transition-all">
+                        How it works
+                    </button>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-24 px-margin-desktop max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Why Plan with BharatTravel AI?</h2>
+<p class="font-body-md text-body-md text-secondary max-w-xl mx-auto">We combine millions of data points with local expertise to create the perfect Indian journey for you.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Large Card -->
+<div class="md:col-span-8 glass-card rounded-card p-10 ambient-shadow flex flex-col md:flex-row gap-8 items-center">
+<div class="flex-1">
+<div class="w-12 h-12 bg-primary-fixed rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="smart_toy">smart_toy</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Hyper-Personalized Itineraries</h3>
+<p class="font-body-md text-body-md text-secondary mb-6">Our AI learns your travel persona—whether you're a luxury seeker, a backpacker, or a culture enthusiast—and crafts minute-by-minute plans just for you.</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-2 bg-secondary-fixed rounded-full text-primary font-label-lg">Cultural Immersion</span>
+<span class="px-4 py-2 bg-secondary-fixed rounded-full text-primary font-label-lg">Adventure Trails</span>
+<span class="px-4 py-2 bg-secondary-fixed rounded-full text-primary font-label-lg">Luxury Stays</span>
+</div>
+</div>
+<div class="flex-1 w-full h-64 rounded-card overflow-hidden" data-alt="A clean, minimalist collage of various Indian travel experiences: a high-end luxury resort in Udaipur, a serene mountain trail in Leh, and a vibrant local market in Jaipur. The images are arranged in a modern bento-style layout with soft rounded corners, using a bright, professional lighting setup and the Primary Blue color palette for accents." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDUCudmQeuD9QsnSdiHAhXsPRUKW5ZZgpZkdBpOWh2Z9A-CFmz4pf0eDYPocsIvn9waMRO7fekGIY8MWmb2aUnwAJx6Pyk41Q87DXvOacZ3_JlPjsjnC2LlLrcM3lRzbA7x1Ky4fZjYUFuUy6tlkxFnxMLYGiUnnr_-6dsmqE39H2kQC6aAnOhWvN6LATmjPbUuLOZgqaDQuYDP5zTJYJtXAId_C9xUYRop0etGARY7HS1x_7w2SC_pfw')"></div>
+</div>
+<!-- Small Card 1 -->
+<div class="md:col-span-4 glass-card rounded-card p-10 ambient-shadow">
+<div class="w-12 h-12 bg-primary-fixed rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="route">route</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Real-time Logistics</h3>
+<p class="font-body-md text-body-md text-secondary">Dynamic route adjustments based on real-time Indian traffic, train schedules, and local weather conditions.</p>
+</div>
+<!-- Small Card 2 -->
+<div class="md:col-span-4 glass-card rounded-card p-10 ambient-shadow">
+<div class="w-12 h-12 bg-primary-fixed rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="restaurant">restaurant</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Curated Flavors</h3>
+<p class="font-body-md text-body-md text-secondary">From Michelin-star restaurants to hidden street-food gems verified by food critics across India.</p>
+</div>
+<!-- Medium Card -->
+<div class="md:col-span-8 glass-card rounded-card p-10 ambient-shadow flex flex-col justify-center">
+<div class="flex items-start gap-6">
+<div class="w-12 h-12 bg-primary-fixed rounded-xl flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="support_agent">support_agent</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">24/7 AI Concierge</h3>
+<p class="font-body-md text-body-md text-secondary">Need to change your dinner reservation at 11 PM in Mumbai? Our AI assistant is always on standby to handle bookings and queries instantly.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 bg-primary text-white overflow-hidden relative">
+<div class="absolute top-0 right-0 opacity-10 transform translate-x-1/4 -translate-y-1/4">
+<span class="material-symbols-outlined text-[400px]" data-icon="travel_explore">travel_explore</span>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop relative z-10 text-center">
+<h2 class="font-headline-xl text-headline-xl mb-6">Your Indian Odyssey Starts Here</h2>
+<p class="font-body-lg text-body-lg mb-10 max-w-2xl mx-auto opacity-80">Join over 50,000 travelers who have transformed their Indian travel experience with BharatTravel AI.</p>
+<div class="inline-block p-2 bg-white/10 rounded-full backdrop-blur-md border border-white/20">
+<button class="bg-white text-primary font-headline-md text-body-md h-[56px] px-12 rounded-full hover:bg-surface-variant transition-colors flex items-center gap-3">
+                        Plan My Journey
+                        <span class="material-symbols-outlined" data-icon="sparkles" style="font-variation-settings: 'FILL' 1;">arrow_back_ios_new</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-surface-container-high w-full py-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1">
+<span class="text-headline-sm font-headline-sm text-primary dark:text-primary-fixed mb-4 block">BharatTravel AI</span>
+<p class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface">Redefining Indian travel through the power of intelligent automation and local empathy.</p>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-primary mb-4">Quick Links</h4>
+<ul class="space-y-2">
+<li><a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface hover:underline transition-all cursor-pointer" href="#">About Us</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface hover:underline transition-all cursor-pointer" href="#">Privacy Policy</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface hover:underline transition-all cursor-pointer" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-primary mb-4">Support</h4>
+<ul class="space-y-2">
+<li><a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface hover:underline transition-all cursor-pointer" href="#">Contact Support</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface hover:underline transition-all cursor-pointer" href="#">FAQ</a></li>
+<li><a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface hover:underline transition-all cursor-pointer" href="#">Feedback</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-lg text-label-lg text-primary mb-4">Stay Inspired</h4>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="share">share</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="mail">mail</span>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop mt-12 pt-8 border-t border-outline-variant/30">
+<p class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface opacity-70 text-center">© 2024 BharatTravel AI. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for hero button
+        document.querySelector('button')?.addEventListener('mousedown', function() {
+            this.style.transform = 'scale(0.98)';
+        });
+        document.querySelector('button')?.addEventListener('mouseup', function() {
+            this.style.transform = 'scale(1.05)';
+        });
+        
+        // Dynamic sticky header shadow
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-md');
+                nav.classList.remove('flat');
+            } else {
+                nav.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>

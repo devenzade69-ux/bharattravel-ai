@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Register - BharatTravel AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#727784",
+                    "on-surface": "#191c1d",
+                    "outline-variant": "#c2c6d4",
+                    "tertiary-container": "#7b5700",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#015cb9",
+                    "surface-container": "#edeeef",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#d9dadb",
+                    "surface-variant": "#e1e3e4",
+                    "inverse-surface": "#2e3132",
+                    "on-tertiary-container": "#ffd17e",
+                    "background": "#f8f9fa",
+                    "on-surface-variant": "#424752",
+                    "on-background": "#191c1d",
+                    "tertiary-fixed": "#ffdea8",
+                    "surface-bright": "#f8f9fa",
+                    "inverse-primary": "#aac7ff",
+                    "on-tertiary-fixed": "#271900",
+                    "primary": "#00458d",
+                    "primary-fixed": "#d7e3ff",
+                    "on-secondary-fixed": "#0f1d28",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#5e4200",
+                    "surface": "#f8f9fa",
+                    "tertiary-fixed-dim": "#ffba20",
+                    "tertiary": "#5d4100",
+                    "secondary": "#52606d",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#c6d8ff",
+                    "secondary-container": "#d6e4f4",
+                    "on-secondary-container": "#586673",
+                    "on-primary-fixed": "#001b3e",
+                    "on-secondary-fixed-variant": "#3b4855",
+                    "secondary-fixed": "#d6e4f4",
+                    "secondary-fixed-dim": "#bac8d7",
+                    "on-error": "#ffffff",
+                    "surface-container-low": "#f3f4f5",
+                    "primary-fixed-dim": "#aac7ff",
+                    "surface-container-highest": "#e1e3e4",
+                    "surface-container-high": "#e7e8e9",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "base": "8px",
+                    "margin-tablet": "32px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .tonal-elevation-2 {
+            box-shadow: 0px 4px 20px rgba(0, 92, 185, 0.08);
+        }
+        .form-input-focus:focus {
+            border-color: #00458d;
+            box-shadow: 0 0 0 1px #00458d;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky z-50 bg-surface dark:bg-on-surface">
+<nav class="flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-gutter">
+<span class="text-headline-md font-headline-md text-primary dark:text-primary-fixed cursor-pointer">BharatTravel AI</span>
+<div class="hidden md:flex gap-8">
+<a class="font-body-md text-body-md text-secondary dark:text-secondary-fixed hover:text-primary-container dark:hover:text-primary-fixed-dim transition-colors cursor-pointer" href="#">Plan a Trip</a>
+<a class="font-body-md text-body-md text-secondary dark:text-secondary-fixed hover:text-primary-container dark:hover:text-primary-fixed-dim transition-colors cursor-pointer" href="#">Saved Trips</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<a class="font-body-md text-body-md text-primary dark:text-primary-fixed font-bold border-b-2 border-primary cursor-pointer" href="#">Login</a>
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed text-2xl cursor-pointer" data-icon="account_circle">account_circle</span>
+</div>
+</nav>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center relative overflow-hidden px-margin-mobile py-12">
+<!-- Subtle Animated Background Element -->
+<div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
+<div class="w-full h-full bg-cover" data-alt="A sophisticated abstract background featuring soft, flowing gradients of primary blue and light grey. The lighting is ethereal and atmospheric, suggesting a premium digital environment. Subtle patterns of architectural Mandalas are woven into the texture, reflecting an intelligent Indian travel aesthetic. The overall mood is serene, modern, and high-end." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBWofoy7PmqcASTad1PoX7sGc_556BO8JYLCRftMlwAMRmA2BwL10-xAY8XyplCfmSAcS6bDfFvMcpUT1T-qXFfjOG2WNGd9z42IktLeE3seF1OgtXg4PAq6V_igkiZw2er8H4r_xU1MTokRk3NqaJorYTshqh705oBZkEgGnYaa4EL_1TACN4jkqBRpq_MRxDukcKwBiw1mI5h32Wt1XtqH_svpPahwYXH6MJECv9iymPN_OfEheowSQ')"></div>
+</div>
+<!-- Registration Card -->
+<div class="relative z-10 w-full max-w-md">
+<div class="bg-white rounded-[24px] tonal-elevation-2 p-8 border border-outline-variant/30 backdrop-blur-sm">
+<div class="mb-8">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-2">Create Account</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Start your AI-powered journey across India today.</p>
+</div>
+<form class="space-y-6" onsubmit="event.preventDefault();">
+<!-- Name Field -->
+<div class="space-y-2">
+<label class="font-label-lg text-label-lg text-on-surface-variant px-1" for="name">Full Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="person">person</span>
+<input class="w-full h-[56px] pl-12 pr-4 rounded-xl border border-outline-variant bg-surface-container-lowest font-body-md text-body-md outline-none transition-all form-input-focus" id="name" placeholder="Arjun Sharma" type="text"/>
+</div>
+</div>
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="font-label-lg text-label-lg text-on-surface-variant px-1" for="email">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="mail">mail</span>
+<input class="w-full h-[56px] pl-12 pr-4 rounded-xl border border-outline-variant bg-surface-container-lowest font-body-md text-body-md outline-none transition-all form-input-focus" id="email" placeholder="arjun.s@example.com" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<label class="font-label-lg text-label-lg text-on-surface-variant px-1" for="password">Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="lock">lock</span>
+<input class="w-full h-[56px] pl-12 pr-[56px] rounded-xl border border-outline-variant bg-surface-container-lowest font-body-md text-body-md outline-none transition-all form-input-focus" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<!-- Submit Button -->
+<button class="w-full h-[56px] bg-primary text-white rounded-full font-label-lg text-label-lg font-bold hover:bg-primary-container transition-all active:scale-[0.98] mt-4" type="submit">
+                        Create Account
+                    </button>
+</form>
+<!-- Footer Link -->
+<div class="mt-8 pt-6 border-t border-outline-variant/30 text-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                        Already have an account? 
+                        <a class="text-primary font-bold hover:underline transition-all" href="#">Login</a>
+</p>
+</div>
+</div>
+<!-- Social Proof / Trust Badge -->
+<div class="mt-8 flex flex-col items-center gap-4 text-center">
+<p class="font-label-md text-label-md text-outline uppercase tracking-widest">Trusted by 50,000+ Travelers</p>
+<div class="flex gap-4 grayscale opacity-60">
+<!-- This area would typically hold partner logos, styled subtly -->
+<div class="h-6 w-24 bg-outline-variant rounded animate-pulse"></div>
+<div class="h-6 w-24 bg-outline-variant rounded animate-pulse"></div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 bg-surface-container dark:bg-surface-container-high">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="md:col-span-1 space-y-4">
+<span class="text-headline-sm font-headline-sm text-primary dark:text-primary-fixed">BharatTravel AI</span>
+<p class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface max-w-[240px]">
+                    Empowering your Indian adventures with intelligent, data-driven trip planning.
+                </p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label-lg text-label-lg text-primary">Explore</h4>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant hover:underline transition-all cursor-pointer" href="#">About Us</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant hover:underline transition-all cursor-pointer" href="#">Contact Support</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label-lg text-label-lg text-primary">Legal</h4>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant hover:underline transition-all cursor-pointer" href="#">Privacy Policy</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant hover:underline transition-all cursor-pointer" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label-lg text-label-lg text-primary">Connect</h4>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors" data-icon="share">share</span>
+<span class="material-symbols-outlined text-secondary cursor-pointer hover:text-primary transition-colors" data-icon="language">language</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant mt-4">
+                    © 2024 BharatTravel AI. All rights reserved.
+                </p>
+</div>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for password visibility toggle
+        document.querySelector('button[type="button"]').addEventListener('click', function() {
+            const input = document.getElementById('password');
+            const icon = this.querySelector('.material-symbols-outlined');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.textContent = 'visibility_off';
+            } else {
+                input.type = 'password';
+                icon.textContent = 'visibility';
+            }
+        });
+
+        // Add a subtle parallax-like effect to the background on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const background = document.querySelector('.absolute.inset-0.z-0');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            background.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+        });
+    </script>
+</body></html>

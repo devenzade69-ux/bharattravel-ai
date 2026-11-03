@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BharatTravel AI | Smart Trip Planner</title>
+<!-- Tailwind CSS with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#727784",
+                        "on-surface": "#191c1d",
+                        "outline-variant": "#c2c6d4",
+                        "tertiary-container": "#7b5700",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#015cb9",
+                        "surface-container": "#edeeef",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#d9dadb",
+                        "surface-variant": "#e1e3e4",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary-container": "#ffd17e",
+                        "background": "#f8f9fa",
+                        "on-surface-variant": "#424752",
+                        "on-background": "#191c1d",
+                        "tertiary-fixed": "#ffdea8",
+                        "surface-bright": "#f8f9fa",
+                        "inverse-primary": "#aac7ff",
+                        "on-tertiary-fixed": "#271900",
+                        "primary": "#00458d",
+                        "primary-fixed": "#d7e3ff",
+                        "on-secondary-fixed": "#0f1d28",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#5e4200",
+                        "surface": "#f8f9fa",
+                        "tertiary-fixed-dim": "#ffba20",
+                        "tertiary": "#5d4100",
+                        "secondary": "#52606d",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#c6d8ff",
+                        "secondary-fixed": "#d6e4f4",
+                        "on-primary-fixed-variant": "#00458e",
+                        "primary-container": "#005cb9",
+                        "on-secondary-container": "#586673",
+                        "on-primary-fixed": "#001b3e",
+                        "on-secondary-fixed-variant": "#3b4855",
+                        "secondary-container": "#d6e4f4",
+                        "secondary-fixed-dim": "#bac8d7",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#f3f4f5",
+                        "primary-fixed-dim": "#aac7ff",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface-container-high": "#e7e8e9",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "card": "24px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "margin-tablet": "32px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .custom-shadow { box-shadow: 0px 4px 20px rgba(0, 92, 185, 0.08); }
+        .stepper-line { position: absolute; left: 11px; top: 24px; bottom: -24px; width: 2px; background-color: #c2c6d4; }
+        .last-stepper .stepper-line { display: none; }
+        .scroll-hide::-webkit-scrollbar { display: none; }
+        .scroll-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-on-surface bg-background">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky z-50 bg-surface">
+<div class="flex justify-between items-center h-16 px-margin-desktop max-w-container-max mx-auto">
+<div class="text-headline-md font-headline-md text-primary">BharatTravel AI</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-body-md text-body-md text-primary font-bold border-b-2 border-primary transition-colors" href="#">Plan a Trip</a>
+<a class="font-body-md text-body-md text-secondary hover:text-primary-container transition-colors" href="#">Saved Trips</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="font-body-md text-body-md text-secondary hover:text-primary-container transition-colors">Login</button>
+<span class="material-symbols-outlined text-primary cursor-pointer active:opacity-80" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-desktop py-8 min-h-screen">
+<div class="flex flex-col lg:flex-row gap-gutter">
+<!-- Left Sidebar/Panel: Inputs -->
+<aside class="w-full lg:w-[380px] shrink-0">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-card p-6 custom-shadow sticky top-24">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">Trip Parameters</h2>
+<form class="space-y-6" id="plannerForm">
+<!-- Destination -->
+<div class="space-y-2">
+<label class="block font-label-lg text-label-lg text-on-surface-variant">Destination in India</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="location_on">location_on</span>
+<input class="w-full pl-10 pr-4 py-3 rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-body-md text-body-md" placeholder="e.g. Udaipur, Rajasthan" type="text"/>
+</div>
+</div>
+<!-- Number of Days -->
+<div class="space-y-2">
+<label class="block font-label-lg text-label-lg text-on-surface-variant">Duration (Days)</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="calendar_today">calendar_today</span>
+<select class="w-full pl-10 pr-4 py-3 rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none appearance-none transition-all font-body-md text-body-md bg-white">
+<option>3 Days</option>
+<option>5 Days</option>
+<option>7 Days</option>
+<option>10 Days</option>
+</select>
+</div>
+</div>
+<!-- Budget Slider -->
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<label class="block font-label-lg text-label-lg text-on-surface-variant">Budget per person</label>
+<span class="text-primary font-bold" id="budgetValue">₹25,000</span>
+</div>
+<input class="w-full h-2 bg-secondary-container rounded-lg appearance-none cursor-pointer accent-primary" max="100000" min="5000" oninput="document.getElementById('budgetValue').innerText = '₹' + parseInt(this.value).toLocaleString()" step="5000" type="range" value="25000"/>
+<div class="flex justify-between text-label-md font-label-md text-outline">
+<span>Budget</span>
+<span>Luxury</span>
+</div>
+</div>
+<!-- Travel Type Chips -->
+<div class="space-y-3">
+<label class="block font-label-lg text-label-lg text-on-surface-variant">Travel Style</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full border border-primary bg-secondary-blue text-primary font-label-lg text-label-lg transition-all" type="button">Solo</button>
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant hover:border-primary transition-all font-label-lg text-label-lg" type="button">Family</button>
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant hover:border-primary transition-all font-label-lg text-label-lg" type="button">Couple</button>
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant hover:border-primary transition-all font-label-lg text-label-lg" type="button">Adventure</button>
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant hover:border-primary transition-all font-label-lg text-label-lg" type="button">Cultural</button>
+</div>
+</div>
+<!-- Generate Button -->
+<button class="w-full h-14 bg-primary hover:bg-primary-container text-white rounded-xl font-headline-md text-body-lg flex items-center justify-center gap-2 transition-all active:scale-95 shadow-lg shadow-primary/20" type="submit">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+                            Generate Trip
+                        </button>
+</form>
+</div>
+</aside>
+<!-- Main Area: AI Results -->
+<section class="flex-1 space-y-8">
+<!-- AI Progress Indicator (Hidden by default, shown during generation) -->
+<div class="hidden" id="aiLoader">
+<div class="w-full h-1 bg-secondary-container rounded-full overflow-hidden">
+<div class="h-full bg-primary animate-[pulse_1.5s_infinite] w-full"></div>
+</div>
+<p class="mt-2 text-center text-label-md text-primary font-medium">Curating your personalized Indian experience...</p>
+</div>
+<!-- Itinerary Result Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<span class="text-primary font-label-lg text-label-lg uppercase tracking-wider">AI Recommendation</span>
+<h1 class="font-headline-xl text-headline-xl text-on-surface">Royal Heritage of Udaipur</h1>
+<p class="text-body-lg text-on-surface-variant max-w-2xl">A curated 3-day journey through the City of Lakes, blending royal history with authentic Rajasthani gastronomy.</p>
+</div>
+<div class="flex gap-2">
+<button class="p-3 rounded-full border border-outline-variant hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="share">share</span>
+</button>
+<button class="p-3 rounded-full border border-outline-variant hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="bookmark">bookmark</span>
+</button>
+</div>
+</div>
+<!-- Daily Itinerary Cards -->
+<div class="space-y-6">
+<!-- Day 1 -->
+<div class="bg-white rounded-card overflow-hidden custom-shadow border border-outline-variant/30">
+<div class="p-6 md:p-8">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold text-xl">01</div>
+<div>
+<h3 class="font-headline-md text-headline-md">Arrival &amp; The Heart of Mewar</h3>
+<p class="text-label-md text-outline">Day 1 • Oct 24, 2024</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-[1fr_300px] gap-8">
+<!-- Timeline -->
+<div class="space-y-12">
+<!-- Slot 1 -->
+<div class="relative pl-10">
+<div class="stepper-line"></div>
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-primary border-4 border-white shadow-sm z-10"></div>
+<div class="space-y-3">
+<div class="flex items-center gap-2">
+<span class="text-label-lg font-label-lg bg-surface-container text-on-surface-variant px-3 py-1 rounded-full">09:00 AM</span>
+<span class="text-primary font-semibold">Sightseeing</span>
+</div>
+<h4 class="font-headline-md text-body-lg font-bold">City Palace Museum</h4>
+<p class="text-body-md text-on-surface-variant">Start your journey at the architectural marvel overlooking Lake Pichola. Explore the crystal gallery and private chambers of the Maharanas.</p>
+<div class="flex gap-2">
+<span class="text-label-md bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded border border-outline-variant/20">Photography Spot</span>
+<span class="text-label-md bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded border border-outline-variant/20">Guide Recommended</span>
+</div>
+</div>
+</div>
+<!-- Slot 2 -->
+<div class="relative pl-10">
+<div class="stepper-line"></div>
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-primary border-4 border-white shadow-sm z-10"></div>
+<div class="space-y-3">
+<div class="flex items-center gap-2">
+<span class="text-label-lg font-label-lg bg-surface-container text-on-surface-variant px-3 py-1 rounded-full">01:30 PM</span>
+<span class="text-tertiary font-semibold">Dining</span>
+</div>
+<h4 class="font-headline-md text-body-lg font-bold">Ambrai Restaurant</h4>
+<p class="text-body-md text-on-surface-variant">Lakeside dining with a direct view of the City Palace. AI suggests trying the traditional Laal Maas or Ker Sangri.</p>
+</div>
+</div>
+<!-- Slot 3 -->
+<div class="relative pl-10 last-stepper">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-primary border-4 border-white shadow-sm z-10"></div>
+<div class="space-y-3">
+<div class="flex items-center gap-2">
+<span class="text-label-lg font-label-lg bg-surface-container text-on-surface-variant px-3 py-1 rounded-full">05:00 PM</span>
+<span class="text-on-secondary-fixed-variant font-semibold">Leisure</span>
+</div>
+<h4 class="font-headline-md text-body-lg font-bold">Boat Ride at Sunset</h4>
+<p class="text-body-md text-on-surface-variant">Experience the golden hour from Lake Pichola, passing by the Lake Palace and Jag Mandir.</p>
+</div>
+</div>
+</div>
+<!-- Day Image Gallery -->
+<div class="hidden md:block space-y-4">
+<div class="rounded-2xl overflow-hidden h-48 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A cinematic, high-angle shot of the Udaipur City Palace reflecting in the calm waters of Lake Pichola during sunset. The golden hour light bathes the white marble architecture in a warm glow, creating a serene and royal atmosphere. The style is modern travel photography with rich blues and vibrant oranges, consistent with a luxury Indian travel aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDACzpNG7Sc2F6fOzJFhM3bSVNlYZ46YsEMJKdevgNIOL15DB7dYqy2HvjMjAb9eZL8BgB11WurnbwQN5LNS2KNHW2Kn-G25rOTgbWPQtI9inms9cn1E-GXG3tKkUH7O_2uGphHXU6WaLF1qPRnWXmFRlPecfnbgz1oSa4B3FIcUaDp4J4bx2NJTxgc2YuKsTGuCjKsS_BWLEcon6EgS3xc_9O8u6wJ34OucVRi4wUJ5xp-PhQOvbjsMg"/>
+</div>
+<div class="rounded-2xl overflow-hidden h-48 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A top-down view of a traditional Rajasthani thali served on a polished brass plate. The meal includes vibrant bowls of Laal Maas, Ker Sangri, Gatte ki Sabzi, and golden Bajra rotis. The table is made of rustic wood with ethnic Indian textiles visible in the corners. Lighting is soft, warm, and professional, emphasizing the textures and spices of authentic Indian cuisine." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaKBUaZEgqohKrNpEAJUIgoWSCyCrTVn8DQsi5a4O7T6K6WvG-T5Lolj77kmqP6i44NUcEseQZXht9L8t3bW1gM6ZaUn8HmfLVhnWMzNPgzbl1l18_E1JjhIOX2PwovIdeoyL5_v77pfh5vtSmBLd0Or-xQCD1zXhfomo-8fVw6OrqWO9x1auFAiCDE7s4aztILivdwUTToZ4VAPuwMcuG4Y9AMgyCs5ySHpYpagGqezmxrRQCa9IIZw"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Day 2 (Condensed View) -->
+<div class="bg-white rounded-card overflow-hidden custom-shadow border border-outline-variant/30">
+<div class="p-6 md:p-8 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-xl">02</div>
+<div>
+<h3 class="font-headline-md text-headline-md">Lakeside Serenity &amp; Crafts</h3>
+<p class="text-label-md text-outline">Day 2 • Oct 25, 2024</p>
+</div>
+</div>
+<button class="text-primary font-label-lg flex items-center gap-1">
+                                View Details
+                                <span class="material-symbols-outlined" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</button>
+</div>
+</div>
+<!-- Day 3 (Condensed View) -->
+<div class="bg-white rounded-card overflow-hidden custom-shadow border border-outline-variant/30">
+<div class="p-6 md:p-8 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-xl">03</div>
+<div>
+<h3 class="font-headline-md text-headline-md">Monsoon Palace Vistas</h3>
+<p class="text-label-md text-outline">Day 3 • Oct 26, 2024</p>
+</div>
+</div>
+<button class="text-primary font-label-lg flex items-center gap-1">
+                                View Details
+                                <span class="material-symbols-outlined" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Insight Section -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-6 bg-primary-fixed rounded-card border border-primary/10">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="payments">payments</span>
+<h4 class="font-label-lg text-label-lg text-primary mb-1">Estimated Cost</h4>
+<p class="text-headline-md font-bold text-on-primary-fixed">₹22,400</p>
+<p class="text-label-md text-on-primary-fixed-variant">Includes entry &amp; dining</p>
+</div>
+<div class="p-6 bg-secondary-fixed rounded-card border border-secondary/10">
+<span class="material-symbols-outlined text-secondary mb-2" data-icon="directions_car">directions_car</span>
+<h4 class="font-label-lg text-label-lg text-secondary mb-1">Best Transport</h4>
+<p class="text-headline-md font-bold text-on-secondary-fixed">Local Rickshaw</p>
+<p class="text-label-md text-on-secondary-fixed-variant">Ease of narrow lanes</p>
+</div>
+<div class="p-6 bg-tertiary-fixed rounded-card border border-tertiary/10">
+<span class="material-symbols-outlined text-tertiary mb-2" data-icon="wb_sunny">wb_sunny</span>
+<h4 class="font-label-lg text-label-lg text-tertiary mb-1">Local Weather</h4>
+<p class="text-headline-md font-bold text-on-tertiary-fixed">28°C / Sunny</p>
+<p class="text-label-md text-on-tertiary-fixed-variant">Carry light cottons</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 bg-surface-container mt-12 border-t border-outline-variant/10">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-container-max mx-auto">
+<div class="space-y-4">
+<div class="text-headline-sm font-headline-sm text-primary">BharatTravel AI</div>
+<p class="text-on-surface-variant text-label-md">Empowering your Indian adventures with intelligent, data-driven planning.</p>
+</div>
+<div class="space-y-4">
+<h5 class="font-label-lg text-on-surface">Company</h5>
+<ul class="space-y-2">
+<li><a class="text-label-md text-on-surface-variant hover:underline transition-all" href="#">About Us</a></li>
+<li><a class="text-label-md text-on-surface-variant hover:underline transition-all" href="#">Contact Support</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h5 class="font-label-lg text-on-surface">Legal</h5>
+<ul class="space-y-2">
+<li><a class="text-label-md text-on-surface-variant hover:underline transition-all" href="#">Privacy Policy</a></li>
+<li><a class="text-label-md text-on-surface-variant hover:underline transition-all" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h5 class="font-label-lg text-on-surface">Social</h5>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="public">public</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="travel">travel</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="mail">mail</span>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop mt-12 pt-8 border-t border-outline-variant/30 text-center">
+<p class="text-label-md text-on-surface-variant">© 2024 BharatTravel AI. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Micro-interactions and UI Logic
+        const form = document.getElementById('plannerForm');
+        const loader = document.getElementById('aiLoader');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            loader.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Simulate AI generation time
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                // Normally here you'd update content dynamically
+                alert('Trip generated successfully!');
+            }, 3000);
+        });
+
+        // Chips Selection Logic
+        const chips = document.querySelectorAll('button[type="button"]');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => {
+                    c.classList.remove('border-primary', 'bg-secondary-blue', 'text-primary');
+                    c.classList.add('border-outline-variant', 'text-on-surface-variant');
+                });
+                chip.classList.remove('border-outline-variant', 'text-on-surface-variant');
+                chip.classList.add('border-primary', 'bg-secondary-blue', 'text-primary');
+            });
+        });
+    </script>
+</body></html>
